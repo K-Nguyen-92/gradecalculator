@@ -79,7 +79,7 @@ def main():
         ]
         min_score = round(min(score))
         max_score = round(max(score))
-        avg_score = round(sum(score) / len(score))
+        avg_score = round(sum(score) // len(score))
         print(f"Min: {min_score}%\nAvg: {avg_score}%\nMax: {max_score}%")
     elif choice == 3:
         a_name = input("What is the assignment name: ")
@@ -97,7 +97,7 @@ def main():
         ]
         min_score = round(min(score))
         max_score = round(max(score))
-        avg_score = round(sum(score) / len(score))
+        avg_score = round(sum(score) // len(score))
         plt.hist(score, bins=[50, 60, 70, 80, 90, 100])
         plt.xlabel("Percentage")
         plt.ylabel("Quantities")
