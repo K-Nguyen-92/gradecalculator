@@ -65,16 +65,17 @@ def main():
         print(f"{round(total / 10)}%")
     elif choice == 2:
         a_name = input("What is the assignment name: ")
-        ass = []
+        a_list = []
+        a_id = int()
         for assignment in assignments:
-            ass.append(assignments[assignment]["name"])
-        if a_name not in ass:
-            print("not found")
+            a_list.append(assignments[assignment]["name"])
+            if a_name == assignments[assignment]["name"]:
+                a_id = assignment
+        if a_name not in a_list:
+            print("Assignment not found")
             return
         score = [
-            sub["percentage"]
-            for sub in submissions
-            if sub["assignment_id"] == assignment
+            sub["percentage"] for sub in submissions if sub["assignment_id"] == a_id
         ]
         min_score = round(min(score))
         max_score = round(max(score))
@@ -82,21 +83,25 @@ def main():
         print(f"Min: {min_score}%\nAvg: {avg_score}%\nMax: {max_score}%")
     elif choice == 3:
         a_name = input("What is the assignment name: ")
-        ass = []
+        a_list = []
+        a_id = int()
         for assignment in assignments:
-            ass.append(assignments[assignment]["name"])
-        if a_name not in ass:
-            print("not found")
+            a_list.append(assignments[assignment]["name"])
+            if a_name == assignments[assignment]["name"]:
+                a_id = assignment
+        if a_name not in a_list:
+            print("Assignment not found")
             return
         score = [
-            sub["percentage"]
-            for sub in submissions
-            if sub["assignment_id"] == assignment
+            sub["percentage"] for sub in submissions if sub["assignment_id"] == a_id
         ]
         min_score = round(min(score))
         max_score = round(max(score))
         avg_score = round(sum(score) / len(score))
         plt.hist(score, bins=[50, 60, 70, 80, 90, 100])
+        plt.xlabel("Percentage")
+        plt.ylabel("Quantities")
+        plt.title(f"{a_name} Graph", fontweight="bold")
         plt.show()
 
 
